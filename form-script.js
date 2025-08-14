@@ -1,3 +1,5 @@
+console.log("DEBUG: Initializing form script");
+
 const canvas = document.getElementById('drawCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -15,6 +17,7 @@ function getPos(e) {
 }
 
 function startDraw(e) {
+    console.log("DEBUG: Starting drawing");
     drawing = true;
     const { x, y } = getPos(e);
     ctx.beginPath();
@@ -38,7 +41,11 @@ function formatRenderer(dataUrl) {
 }
 
 function updateHidden() {
-    document.getElementById('drawingData').value = formatRenderer(canvas.toDataURL('image/png'));
+    // document.getElementById('drawingData').value = formatRenderer(canvas.toDataURL('image/png'));
+    const data = formatRenderer(canvas.toDataURL('image/png'));
+    console.log("DEBUG: Updating hidden field with data:", data);
+
+    document.getElementById('drawingData').value = data;
 }
 
 document.getElementById('resetBtn').addEventListener('click', () => {
