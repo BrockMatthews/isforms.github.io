@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Image Viewer</title>
+</head>
+
+<body>
+    <div style="position:relative; display:inline-block;">
+        <img src="TODO" width="500" height="300" style="display:block;">
+
+        <img id="foreground" alt="No image data" style="position:absolute; top:0; left:0; border:1px solid #ccc;">
+    </div>
+
+    <script>
+        (function () {
+            const fragment = decodeURIComponent(window.location.hash.substring(1));
+
+            if (!fragment || !fragment.startsWith("data:image/")) return;
+
+            document.getElementById("foreground").src = fragment;
+        })();
+    </script>
+</body>
+
+</html>
